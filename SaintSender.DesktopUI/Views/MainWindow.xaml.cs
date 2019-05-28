@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SaintSender.Core.Services;
+using SDKSample;
 
 namespace SaintSender.DesktopUI
 {
@@ -26,12 +27,13 @@ namespace SaintSender.DesktopUI
             InitializeComponent();
         }
 
-        private void GreetBtn_Click(object sender, RoutedEventArgs e)
+        private void OptionBtn_Click(object sender, RoutedEventArgs e)
         {
-            var service = new GreetService();
-            var name = NameTxt.Text;
-            var greeting = service.Greet(name);
-            ResultTxt.Text = greeting;
+            var dialog = new DialogBox();
+            if (dialog.ShowDialog() == true)
+            {
+                
+            }
         }
     }
 }

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SaintSender.Core.Services;
 using SDKSample;
+using SaintSender.DesktopUI.Views.MailModal;
 
 namespace SaintSender.DesktopUI
 {
@@ -31,6 +32,15 @@ namespace SaintSender.DesktopUI
         {
             var dialog = new DialogBox();
             if (dialog.ShowDialog() == true)
+            {
+                
+            }
+        }
+
+        private void ComposeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var mailWindow = new MailWindow();
+            if (mailWindow.ShowDialog() == true)
             {
                 
             }

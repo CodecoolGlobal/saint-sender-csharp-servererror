@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SaintSender.Core.Services;
+using SaintSender.DesktopUI.ViewModels;
 
 namespace SaintSender.DesktopUI
 {
@@ -21,6 +22,8 @@ namespace SaintSender.DesktopUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainViewModel _mVM = new MainViewModel();
+
         public MainWindow()
         {
             InitializeComponent();

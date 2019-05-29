@@ -56,12 +56,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Views\MailModal\MailCheck.xaml.cs">
+      <DependentUpon>MailCheck.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MailModal\MailWindow.xaml.cs">
       <DependentUpon>MailWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OptionModal\DialogBox.xaml.cs">
       <DependentUpon>DialogBox.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\MailModal\MailCheck.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MailModal\MailWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -45,5 +45,15 @@ namespace SaintSender.DesktopUI
                 
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var mailCheckWindow = new MailCheck();
+            if (mailCheckWindow.ShowDialog()==true)
+            {
+                
+            }
+
+        }
     }
 }

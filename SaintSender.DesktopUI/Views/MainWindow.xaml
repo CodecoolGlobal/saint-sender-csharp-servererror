@@ -5,10 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaintSender.DesktopUI"
         mc:Ignorable="d"
-        Title="SainSender" Height="450" Width="800">
+        Title="SainSender" Height="768" Width="1024"
+        ResizeMode="NoResize">
+
     <Grid>
-        <TextBox Name="NameTxt" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button Name="GreetBtn" Content="Greet" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="140,13,0,0" Click="GreetBtn_Click"/>
-        <TextBlock Name="ResultTxt" HorizontalAlignment="Left" Margin="10,45,0,0" FontSize="28" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*">
+
+            </RowDefinition>
+            <RowDefinition Height="9*">
+
+            </RowDefinition>
+        </Grid.RowDefinitions>
+        <DataGrid HorizontalAlignment="Left" Height="665" Grid.Row="1" VerticalAlignment="Top" Width="1008"/>
+        <Button x:Name="ComposeBtn" Content="Compose" HorizontalAlignment="Left" Margin="907,26,0,0" VerticalAlignment="Top" Width="75" Click="ComposeBtn_Click"/>
+        <Button x:Name="RefreshBtn" Content="Refresh" HorizontalAlignment="Left" Margin="763,26,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="OptionBtn" Content="Options" HorizontalAlignment="Left" Margin="632,26,0,0" VerticalAlignment="Top" Width="75" Click="OptionBtn_Click"/>
+        <Button Content="ForCheckMail" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="283,31,0,0" Click="Button_Click"/>
     </Grid>
 </Window>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SaintSender.DesktopUI.ViewModels
 {
-    class MainViewModel
+    public class MainViewModel
     {
         public MailBoxHandler mailBoxHandler;
 
@@ -17,16 +17,13 @@ namespace SaintSender.DesktopUI.ViewModels
             mailBoxHandler.SetNewCredentials("codekingzotya1993@gmail.com", "ServerError2019");
         }
 
-        public void SendEmail(string senderName,
-                              string senderEmail,
-                              string recipient,
+        public void SendEmail(
                               string recipientEmail,
                               string subject,
-                              string bodyText,
-                              string userName,
-                              string password)
+                              string bodyText
+                              )
         {
-            mailBoxHandler.SendEmail(senderName, senderEmail, recipient, recipientEmail, subject, bodyText, userName, password);
+            mailBoxHandler.SendEmail(recipientEmail, subject, bodyText);
         }
     }
 }

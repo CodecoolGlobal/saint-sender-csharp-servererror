@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SaintSender.Core.Services;
+using SDKSample;
+using SaintSender.DesktopUI.Views.MailModal;
 using SaintSender.DesktopUI.ViewModels;
 
 namespace SaintSender.DesktopUI
@@ -29,12 +31,32 @@ namespace SaintSender.DesktopUI
             InitializeComponent();
         }
 
-        private void GreetBtn_Click(object sender, RoutedEventArgs e)
+        private void OptionBtn_Click(object sender, RoutedEventArgs e)
         {
-            var service = new GreetService();
-            var name = NameTxt.Text;
-            var greeting = service.Greet(name);
-            ResultTxt.Text = greeting;
+            var dialog = new DialogBox();
+            if (dialog.ShowDialog() == true)
+            {
+                
+            }
+        }
+
+        private void ComposeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var mailWindow = new MailWindow(_mVM);
+            if (mailWindow.ShowDialog() == true)
+            {
+                
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var mailCheckWindow = new MailCheck();
+            if (mailCheckWindow.ShowDialog()==true)
+            {
+                
+            }
+
         }
     }
 }

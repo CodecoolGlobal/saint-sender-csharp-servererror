@@ -57,18 +57,15 @@ namespace SaintSender.Core.Entities
         }
         
         //Refactor to store data in a dictionary instead of a long param list.
-        public void SendEmail(string senderName,
-                              string senderEmail,
-                              string recipient,
+        public void SendEmail(
                               string recipientEmail,
                               string subject,
-                              string bodyText,
-                              string userName,
-                              string password)
+                              string bodyText
+                              )
         {
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress(senderName, senderEmail));
-            message.To.Add(new MailboxAddress(recipient, recipientEmail));
+            message.From.Add(new MailboxAddress(_address));
+            message.To.Add(new MailboxAddress(recipientEmail));
             message.Subject = subject;
 
             var builder = new BodyBuilder();
@@ -82,10 +79,9 @@ namespace SaintSender.Core.Entities
                 var client = new SmtpClient();
 
                 client.Connect("smtp.gmail.com", 465, true);
-                client.Authenticate(userName, password);
+                client.Authenticate(_address, _password);
                 client.Send(message);
                 client.Disconnect(true);
-
             }
             catch (Exception e)
             {

@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MimeKit;
+using SaintSender.DesktopUI.ViewModels;
+using SaintSender.DesktopUI.Views.MailModal;
+using SDKSample;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using SaintSender.Core.Services;
 
 namespace SaintSender.DesktopUI
 {
@@ -21,17 +13,48 @@ namespace SaintSender.DesktopUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainViewModel _mVM = new MainViewModel();
+        public ObservableCollection<MimeMessage> emails;
         public MainWindow()
         {
             InitializeComponent();
+            emails = _mVM.GetUserEmails();
+            InboxElements.DataContext = emails;
+
         }
 
-        private void GreetBtn_Click(object sender, RoutedEventArgs e)
+        private void OptionBtn_Click(object sender, RoutedEventArgs e)
         {
-            var service = new GreetService();
-            var name = NameTxt.Text;
-            var greeting = service.Greet(name);
-            ResultTxt.Text = greeting;
+            var dialog = new DialogBox();
+            if (dialog.ShowDialog() == true)
+            {
+
+            }
+        }
+
+        private void ComposeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var mailWindow = new MailWindow(_mVM);
+            if (mailWindow.ShowDialog() == true)
+            {
+
+            }
+        }
+
+
+        private void RefreshBtn_Click(object sender, RoutedEventArgs e)
+        {
+            emails = _mVM.GetUserEmails();
+            InboxElements.DataContext = emails;
+        }
+
+
+        private void InboxElements_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MimeMessage email;
+            email = (MimeMessage) InboxElements.SelectedItem;
+            var mailCheckWindow = new MailCheck(email);
+            mailCheckWindow.ShowDialog();
         }
     }
 }

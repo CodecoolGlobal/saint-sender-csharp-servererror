@@ -5,6 +5,8 @@ using SDKSample;
 using System.Collections.ObjectModel;
 using MimeKit;
 using System;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace SaintSender.DesktopUI
 {

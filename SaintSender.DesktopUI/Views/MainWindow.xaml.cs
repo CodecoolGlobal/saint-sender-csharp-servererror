@@ -46,10 +46,17 @@ namespace SaintSender.DesktopUI
 
         private void InboxElements_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MimeMessage email;
-            email = (MimeMessage) InboxElements.SelectedItem;
-            var mailCheckWindow = new MailCheck(email);
-            mailCheckWindow.ShowDialog();
+            try
+            {
+                MimeMessage email;
+                email = (MimeMessage)InboxElements.SelectedItem;
+                var mailCheckWindow = new MailCheck(email);
+                mailCheckWindow.ShowDialog();
+            }
+            catch (NullReferenceException c)
+            {
+                Console.WriteLine(c);
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ namespace SaintSender.DesktopUI.ViewModels
         public MainViewModel()
         {
             mailBoxHandler = new MailBoxHandler();
-            mailBoxHandler.SetNewCredentials("codekingzotya1993@gmail.com", "ServerError2019");
+            mailBoxHandler.SetNewCredentials("csharpservererror@gmail.com", "s3rv3r3rr0r");
         }
 
         public void SendEmail(
@@ -33,5 +33,6 @@ namespace SaintSender.DesktopUI.ViewModels
         {
             return mailBoxHandler.DownloadMessages();
         }
+
     }
 }

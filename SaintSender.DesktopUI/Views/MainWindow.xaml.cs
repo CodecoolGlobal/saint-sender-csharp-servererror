@@ -3,7 +3,6 @@ using SaintSender.DesktopUI.ViewModels;
 using SaintSender.DesktopUI.Views.MailModal;
 using SDKSample;
 using System.Collections.ObjectModel;
-using MimeKit;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,7 +23,6 @@ namespace SaintSender.DesktopUI
             dialog.ShowDialog();
             emails = _mVM.GetUserEmails();
             InboxElements.DataContext = emails;
-
         }
 
         private void OptionBtn_Click(object sender, RoutedEventArgs e)
@@ -37,12 +35,6 @@ namespace SaintSender.DesktopUI
         {
             var mailWindow = new MailWindow(_mVM);
             mailWindow.ShowDialog();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var mailCheckWindow = new MailCheck();
-            mailCheckWindow.ShowDialog();
         }
 
         private void RefreshBtn_Click(object sender, RoutedEventArgs e)

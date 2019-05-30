@@ -19,12 +19,15 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Label x:Name="SenderOrReceiverLabel" Margin="0,0,0,10">To:</Label>
-        <TextBox x:Name="SenderOrReceiverBox" Grid.Column="1" Margin="0,0,0,10"></TextBox>
+        <TextBox x:Name="ToField"
+                 Grid.Column="1" Margin="0,0,0,10"></TextBox>
         <Label Grid.Row="1" Margin="0,0,0,10">Subject:</Label>
         <TextBox x:Name="SubjectBox" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10"></TextBox>
         <Label Grid.Row="2">Body:</Label>
         <TextBox x:Name="BodyBox" HorizontalAlignment="Left" Height="316" Margin="0,0,0,-239" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="673" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2"/>
-        <Button x:Name="ContentBtn" Content="Send" HorizontalAlignment="Left" Margin="456,293,0,-280" VerticalAlignment="Top" Width="75" Grid.Column="1" Grid.Row="3"/>
+        <Button x:Name="SendBtn"
+                Content="Send" HorizontalAlignment="Left" Margin="456,293,0,-280" VerticalAlignment="Top" Width="75" Grid.Column="1" Grid.Row="3"
+                Click="SendBtn_Click" />
         <Button x:Name="CancelBtn" Content="Cancel" Grid.Column="1" HorizontalAlignment="Left" Margin="598,293,0,-269" Grid.Row="3" VerticalAlignment="Top" Width="75"/>
     </Grid>
 

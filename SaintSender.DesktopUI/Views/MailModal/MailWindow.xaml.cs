@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SaintSender.DesktopUI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,20 @@ namespace SaintSender.DesktopUI.Views.MailModal
     /// </summary>
     public partial class MailWindow : Window
     {
-        public MailWindow()
+        private MainViewModel _mVM;
+
+        public MailWindow(MainViewModel mainViewModel)
         {
             InitializeComponent();
+            _mVM = mainViewModel;
+        }
+
+        private void SendBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string senderEmail = ToField.Text;
+            string subject = SubjectBox.Text;
+            string text = BodyBox.Text;
+            _mVM.SendEmail(senderEmail, subject, text);
         }
     }
 }

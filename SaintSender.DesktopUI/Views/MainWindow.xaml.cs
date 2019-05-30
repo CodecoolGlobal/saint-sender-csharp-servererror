@@ -4,6 +4,7 @@ using SaintSender.DesktopUI.Views.MailModal;
 using SaintSender.DesktopUI.ViewModels;
 using System.Collections.ObjectModel;
 using MimeKit;
+using System;
 
 namespace SaintSender.DesktopUI
 {
@@ -20,6 +21,8 @@ namespace SaintSender.DesktopUI
             InitializeComponent();
             var dialog = new DialogBox(_mVM);
             dialog.ShowDialog();
+            emails = _mVM.GetUserEmails();
+            throw new Exception("Emails downloaded");
         }
 
         private void OptionBtn_Click(object sender, RoutedEventArgs e)

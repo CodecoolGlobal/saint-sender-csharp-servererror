@@ -25,29 +25,19 @@ namespace SaintSender.DesktopUI
         private void OptionBtn_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new DialogBox(_mVM);
-            if (dialog.ShowDialog() == true)
-            {
-                
-            }
+            dialog.ShowDialog();
         }
 
         private void ComposeBtn_Click(object sender, RoutedEventArgs e)
         {
             var mailWindow = new MailWindow(_mVM);
-            if (mailWindow.ShowDialog() == true)
-            {
-                
-            }
+            mailWindow.ShowDialog();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var mailCheckWindow = new MailCheck();
-            if (mailCheckWindow.ShowDialog()==true)
-            {
-                
-            }
-
+            mailCheckWindow.ShowDialog();
         }
 
         private void RefreshBtn_Click(object sender, RoutedEventArgs e)

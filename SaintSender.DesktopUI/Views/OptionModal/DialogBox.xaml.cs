@@ -26,12 +26,12 @@ namespace SDKSample
             string emailAddress = emailBox.Text;
             string password = passwordBox.Password;
             _mvm.SetNewUser(emailAddress, password);
-            this.Close();
+            Close();
         }
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

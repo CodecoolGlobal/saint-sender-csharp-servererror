@@ -7,6 +7,8 @@ namespace SaintSender.DesktopUI.ViewModels
     public class MainViewModel
     {
         public MailBoxHandler mailBoxHandler;
+        public ObservableCollection<MimeMessage> emails;
+
         public MainViewModel()
         {
             mailBoxHandler = new MailBoxHandler();

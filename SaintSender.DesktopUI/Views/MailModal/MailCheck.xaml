@@ -18,17 +18,18 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Label x:Name="SenderOrReceiverLabel" Margin="0,0,0,10">To:</Label>
-        <TextBox x:Name="SenderOrReceiverBox" Grid.Column="1" Margin="0,0,0,10"></TextBox>
+        <Label x:Name="SenderLabel" Margin="0,0,0,10">From:</Label>
+        <TextBox x:Name="SenderBox" Grid.Column="1" Margin="0,0,0,10"></TextBox>
         <Label Grid.Row="1" Margin="0,0,0,10">Subject:</Label>
         <TextBox x:Name="SubjectBox" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10"></TextBox>
         <Label Grid.Row="2">Body:</Label>
-        <Button x:Name="ContentBtn" Content="Send" HorizontalAlignment="Left" Margin="456,293,0,-280" VerticalAlignment="Top" Width="75" Grid.Column="1" Grid.Row="3"/>
-        <Button x:Name="CancelBtn" Content="Cancel" Grid.Column="1" HorizontalAlignment="Left" Margin="598,293,0,-269" Grid.Row="3" VerticalAlignment="Top" Width="75"/>
-        <WebBrowser HorizontalAlignment="Left" Height="287" Grid.RowSpan="2" VerticalAlignment="Top" Width="673" Grid.Column="1" Margin="0,0,0,-207" Grid.Row="2" OpacityMask="#FFC52B2B">
-            <WebBrowser.Effect>
-                <DropShadowEffect/>
-            </WebBrowser.Effect>
-        </WebBrowser>
+        <Button x:Name="CancelBtn" Content="Close" Grid.Column="1" HorizontalAlignment="Left" Margin="598,293,0,-269" Grid.Row="3" VerticalAlignment="Top" Width="75"/>
+        <RichTextBox x:Name="Body" HorizontalAlignment="Left" Height="287" Grid.RowSpan="2" VerticalAlignment="Top" Width="673" Grid.Column="1" Margin="0,0,0,-207" Grid.Row="2">
+            <FlowDocument>
+                <Paragraph>
+                    <Run x:Name="BodyText" Text="RichTextBox"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
     </Grid>
 </Window>

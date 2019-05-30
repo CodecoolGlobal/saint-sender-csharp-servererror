@@ -1,4 +1,5 @@
-﻿using SaintSender.DesktopUI.ViewModels;
+﻿using SaintSender.DesktopUI;
+using SaintSender.DesktopUI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace SaintSender.DesktopUI.Views.MailModal
         {
             InitializeComponent();
             _mVM = mainViewModel;
+            
         }
 
         private void SendBtn_Click(object sender, RoutedEventArgs e)

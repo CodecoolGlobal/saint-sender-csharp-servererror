@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MimeKit;
 
 namespace SaintSender.DesktopUI.Views.MailModal
 {
@@ -22,6 +23,14 @@ namespace SaintSender.DesktopUI.Views.MailModal
         public MailCheck()
         {
             InitializeComponent();
+        }
+
+        public MailCheck(MimeMessage mail)
+        {
+            InitializeComponent();
+            SenderBox.Text = mail.From.ToString();
+            SubjectBox.Text = mail.Subject;
+            BodyText.Text = mail.GetTextBody(MimeKit.Text.TextFormat.Plain);
         }
     }
 }

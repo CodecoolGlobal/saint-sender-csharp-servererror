@@ -1,7 +1,7 @@
-﻿using System.Windows;
-using SDKSample;
-using SaintSender.DesktopUI.Views.MailModal;
+﻿using MimeKit;
 using SaintSender.DesktopUI.ViewModels;
+using SaintSender.DesktopUI.Views.MailModal;
+using SDKSample;
 using System.Collections.ObjectModel;
 using MimeKit;
 using System;
@@ -15,13 +15,14 @@ namespace SaintSender.DesktopUI
     {
         private MainViewModel _mVM = new MainViewModel();
         public ObservableCollection<MimeMessage> emails;
-
         public MainWindow()
         {
             InitializeComponent();
             var dialog = new DialogBox(_mVM);
             dialog.ShowDialog();
             emails = _mVM.GetUserEmails();
+            InboxElements.DataContext = emails;
+
         }
 
         private void OptionBtn_Click(object sender, RoutedEventArgs e)
@@ -45,6 +46,16 @@ namespace SaintSender.DesktopUI
         private void RefreshBtn_Click(object sender, RoutedEventArgs e)
         {
             emails = _mVM.GetUserEmails();
+            InboxElements.DataContext = emails;
+        }
+
+
+        private void InboxElements_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MimeMessage email;
+            email = (MimeMessage) InboxElements.SelectedItem;
+            var mailCheckWindow = new MailCheck(email);
+            mailCheckWindow.ShowDialog();
         }
     }
 }

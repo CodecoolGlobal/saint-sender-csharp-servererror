@@ -18,7 +18,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Label x:Name="SenderOrReceiverLabel" Margin="0,0,0,10">To:</Label>
+        <Label x:Name="ReceiverLabel" Margin="0,0,0,10">To:</Label>
         <TextBox x:Name="ToField"
                  Grid.Column="1" Margin="0,0,0,10"></TextBox>
         <Label Grid.Row="1" Margin="0,0,0,10">Subject:</Label>

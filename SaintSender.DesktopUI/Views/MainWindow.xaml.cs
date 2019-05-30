@@ -22,7 +22,6 @@ namespace SaintSender.DesktopUI
             var dialog = new DialogBox(_mVM);
             dialog.ShowDialog();
             emails = _mVM.GetUserEmails();
-            throw new Exception("Emails downloaded");
         }
 
         private void OptionBtn_Click(object sender, RoutedEventArgs e)

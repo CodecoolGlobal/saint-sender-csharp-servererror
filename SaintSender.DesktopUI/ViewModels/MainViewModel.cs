@@ -17,7 +17,6 @@ namespace SaintSender.DesktopUI.ViewModels
         public MainViewModel()
         {
             mailBoxHandler = new MailBoxHandler();
-            mailBoxHandler.SetNewCredentials("codekingzotya1993@gmail.com", "ServerError2019");
         }
 
         public void SendEmail(
@@ -32,6 +31,11 @@ namespace SaintSender.DesktopUI.ViewModels
         public ObservableCollection<MimeMessage> GetUserEmails()
         {
             return mailBoxHandler.DownloadMessages();
+        }
+
+        public void SetNewUser(string email, string password)
+        {
+            mailBoxHandler.SetNewCredentials(email, password);
         }
     }
 }

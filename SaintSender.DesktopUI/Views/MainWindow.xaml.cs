@@ -1,18 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using SaintSender.Core.Services;
+﻿using System.Windows;
 using SDKSample;
 using SaintSender.DesktopUI.Views.MailModal;
 using SaintSender.DesktopUI.ViewModels;
@@ -32,11 +18,13 @@ namespace SaintSender.DesktopUI
         public MainWindow()
         {
             InitializeComponent();
+            var dialog = new DialogBox(_mVM);
+            dialog.ShowDialog();
         }
 
         private void OptionBtn_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new DialogBox();
+            var dialog = new DialogBox(_mVM);
             if (dialog.ShowDialog() == true)
             {
                 
@@ -65,11 +53,6 @@ namespace SaintSender.DesktopUI
         private void RefreshBtn_Click(object sender, RoutedEventArgs e)
         {
             emails = _mVM.GetUserEmails();
-            foreach (var item in emails)
-            {
-                Console.WriteLine(item.Subject);
-            }
-            Console.ReadLine();
         }
     }
 }

@@ -6,6 +6,7 @@ using MailKit.Security;
 using MailKit.Search;
 using MimeKit;
 using MailKit.Net.Smtp;
+using System.Collections.ObjectModel;
 
 namespace SaintSender.Core.Entities
 {
@@ -25,9 +26,9 @@ namespace SaintSender.Core.Entities
 
         }
 
-        public List<MimeMessage> DownloadMessages()
+        public ObservableCollection<MimeMessage> DownloadMessages()
         {
-            List<MimeMessage> messages = new List<MimeMessage>();
+            ObservableCollection<MimeMessage> messages = new ObservableCollection<MimeMessage>();
 
             using (var client = new ImapClient())
             {

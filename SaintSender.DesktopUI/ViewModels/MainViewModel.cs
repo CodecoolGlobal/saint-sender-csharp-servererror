@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+using MimeKit;
 
 namespace SaintSender.DesktopUI.ViewModels
 {
     public class MainViewModel
     {
         public MailBoxHandler mailBoxHandler;
+        public ObservableCollection<MimeMessage> emails;
 
         public MainViewModel()
         {
@@ -24,6 +27,11 @@ namespace SaintSender.DesktopUI.ViewModels
                               )
         {
             mailBoxHandler.SendEmail(recipientEmail, subject, bodyText);
+        }
+
+        public ObservableCollection<MimeMessage> GetUserEmails()
+        {
+            return mailBoxHandler.DownloadMessages();
         }
     }
 }

@@ -16,6 +16,8 @@ using SaintSender.Core.Services;
 using SDKSample;
 using SaintSender.DesktopUI.Views.MailModal;
 using SaintSender.DesktopUI.ViewModels;
+using System.Collections.ObjectModel;
+using MimeKit;
 
 namespace SaintSender.DesktopUI
 {
@@ -25,6 +27,7 @@ namespace SaintSender.DesktopUI
     public partial class MainWindow : Window
     {
         private MainViewModel _mVM = new MainViewModel();
+        public ObservableCollection<MimeMessage> emails;
 
         public MainWindow()
         {
@@ -57,6 +60,16 @@ namespace SaintSender.DesktopUI
                 
             }
 
+        }
+
+        private void RefreshBtn_Click(object sender, RoutedEventArgs e)
+        {
+            emails = _mVM.GetUserEmails();
+            foreach (var item in emails)
+            {
+                Console.WriteLine(item.Subject);
+            }
+            Console.ReadLine();
         }
     }
 }

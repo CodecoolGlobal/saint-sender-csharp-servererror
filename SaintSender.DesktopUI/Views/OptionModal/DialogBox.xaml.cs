@@ -28,7 +28,7 @@ namespace SDKSample
             string password = passwordBox.Password;
             _mvm.SetNewUser(emailAddress, password);
             if (_mvm.IsEmailValid(emailAddress) && _mvm.GetUserEmails() != null)
-            {
+            {   
                 Close();
             }
             else

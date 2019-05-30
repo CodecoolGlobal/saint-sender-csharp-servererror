@@ -34,20 +34,26 @@ namespace SaintSender.Core.Entities
             using (var client = new ImapClient())
             {
                 client.Connect("imap.gmail.com", 993, SecureSocketOptions.SslOnConnect);
-
-                client.Authenticate(_address, _password);
-
-                client.Inbox.Open(FolderAccess.ReadOnly);
-
-                var uids = client.Inbox.Search(SearchQuery.All);
-
-                foreach (var uid in uids)
+                try
                 {
-                    //var letter = System.Text.RegularExpressions.Regex.Replace(message.HtmlBody, "<[^>]*>", "");
+                    client.Authenticate(_address, _password);
+                
+                    client.Inbox.Open(FolderAccess.ReadOnly);
 
-                    messages.Add(client.Inbox.GetMessage(uid));
+                    var uids = client.Inbox.Search(SearchQuery.All);
+
+                    foreach (var uid in uids)
+                    {
+                        //var letter = System.Text.RegularExpressions.Regex.Replace(message.HtmlBody, "<[^>]*>", "");
+
+                        messages.Add(client.Inbox.GetMessage(uid));
+                    }
+                    client.Disconnect(true);
                 }
-                client.Disconnect(true);
+                catch (System.ArgumentNullException e)
+                {
+                    Console.WriteLine("Authentication failed");
+                }
                 return messages;
             }
         }

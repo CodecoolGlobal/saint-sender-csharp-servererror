@@ -23,15 +23,10 @@ namespace SaintSender.DesktopUI
             var dialog = new DialogBox(_mVM);
             dialog.ShowDialog();
             emails = _mVM.GetUserEmails();
-            //while (emails == null)
-            //{
-            //    var errorMessage = new InvalidEmailOrPassword();
-            //    errorMessage.ShowDialog();
-
-            //    var optionsPopUp = new DialogBox(_mVM);
-            //    optionsPopUp.ShowDialog();
-            //    emails = _mVM.GetUserEmails();
-            //}
+            if (dialog == null && _mVM.GetUserEmails() == null)
+            {
+                Close();
+            }
         }
 
         private void OptionBtn_Click(object sender, RoutedEventArgs e)

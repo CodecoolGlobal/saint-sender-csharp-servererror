@@ -5,6 +5,7 @@ using SaintSender.DesktopUI.ViewModels;
 using System.Collections.ObjectModel;
 using MimeKit;
 using System;
+using SaintSender.DesktopUI.Views.WarningPopup;
 
 namespace SaintSender.DesktopUI
 {
@@ -22,6 +23,15 @@ namespace SaintSender.DesktopUI
             var dialog = new DialogBox(_mVM);
             dialog.ShowDialog();
             emails = _mVM.GetUserEmails();
+            //while (emails == null)
+            //{
+            //    var errorMessage = new InvalidEmailOrPassword();
+            //    errorMessage.ShowDialog();
+
+            //    var optionsPopUp = new DialogBox(_mVM);
+            //    optionsPopUp.ShowDialog();
+            //    emails = _mVM.GetUserEmails();
+            //}
         }
 
         private void OptionBtn_Click(object sender, RoutedEventArgs e)

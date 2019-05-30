@@ -7,6 +7,7 @@ using MailKit.Search;
 using MimeKit;
 using MailKit.Net.Smtp;
 using System.Collections.ObjectModel;
+using System.Net.Mail;
 
 namespace SaintSender.Core.Entities
 {
@@ -51,6 +52,20 @@ namespace SaintSender.Core.Entities
             }
         }
 
+        public bool ValidateEmail(string emailaddress)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(emailaddress);
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+
         public void SetNewCredentials(string address, string password)
         {
             _address = address;
@@ -77,7 +92,7 @@ namespace SaintSender.Core.Entities
 
             try
             {
-                var client = new SmtpClient();
+                var client = new MailKit.Net.Smtp.SmtpClient();
 
                 client.Connect("smtp.gmail.com", 465, true);
                 client.Authenticate(_address, _password);

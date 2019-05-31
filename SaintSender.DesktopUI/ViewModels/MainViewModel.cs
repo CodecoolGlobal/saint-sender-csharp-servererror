@@ -1,9 +1,5 @@
-﻿using SaintSender.Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using SaintSender.Core.Entities;
 using System.Collections.ObjectModel;
 using MimeKit;
 
@@ -17,7 +13,6 @@ namespace SaintSender.DesktopUI.ViewModels
         public MainViewModel()
         {
             mailBoxHandler = new MailBoxHandler();
-            mailBoxHandler.SetNewCredentials("csharpservererror@gmail.com", "s3rv3r3rr0r");
         }
 
         public void SendEmail(
@@ -29,10 +24,27 @@ namespace SaintSender.DesktopUI.ViewModels
             mailBoxHandler.SendEmail(recipientEmail, subject, bodyText);
         }
 
-        public ObservableCollection<MimeMessage> GetUserEmails()
+        public bool IsEmailValid(string emailaddress)
         {
-            return mailBoxHandler.DownloadMessages();
+            return mailBoxHandler.ValidateEmail(emailaddress);
         }
 
+        public ObservableCollection<MimeMessage> GetUserEmails()
+        {
+            try
+            {
+                return mailBoxHandler.DownloadMessages();
+            }
+            catch (MailKit.Security.AuthenticationException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public void SetNewUser(string email, string password)
+        {
+            mailBoxHandler.SetNewCredentials(email, password);
+        }
     }
 }

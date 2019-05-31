@@ -36,6 +36,12 @@ namespace SaintSender.DesktopUI.Views.MailModal
             string subject = SubjectBox.Text;
             string text = BodyBox.Text;
             _mVM.SendEmail(senderEmail, subject, text);
+            Close();
+        }
+
+        private void CancelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

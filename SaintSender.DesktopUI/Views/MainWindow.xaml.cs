@@ -3,8 +3,10 @@ using SaintSender.DesktopUI.ViewModels;
 using SaintSender.DesktopUI.Views.MailModal;
 using SDKSample;
 using System.Collections.ObjectModel;
+using System;
 using System.Windows;
 using System.Windows.Controls;
+using SaintSender.DesktopUI.Views.WarningPopup;
 
 namespace SaintSender.DesktopUI
 {
@@ -18,29 +20,27 @@ namespace SaintSender.DesktopUI
         public MainWindow()
         {
             InitializeComponent();
+            var dialog = new DialogBox(_mVM);
+            dialog.ShowDialog();
             emails = _mVM.GetUserEmails();
+            if (dialog == null && _mVM.GetUserEmails() == null)
+            {
+                Close();
+            }
             InboxElements.DataContext = emails;
-
         }
 
         private void OptionBtn_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new DialogBox();
-            if (dialog.ShowDialog() == true)
-            {
-
-            }
+            var dialog = new DialogBox(_mVM);
+            dialog.ShowDialog();
         }
 
         private void ComposeBtn_Click(object sender, RoutedEventArgs e)
         {
             var mailWindow = new MailWindow(_mVM);
-            if (mailWindow.ShowDialog() == true)
-            {
-
-            }
+            mailWindow.ShowDialog();
         }
-
 
         private void RefreshBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -51,10 +51,17 @@ namespace SaintSender.DesktopUI
 
         private void InboxElements_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MimeMessage email;
-            email = (MimeMessage) InboxElements.SelectedItem;
-            var mailCheckWindow = new MailCheck(email);
-            mailCheckWindow.ShowDialog();
+            try
+            {
+                MimeMessage email;
+                email = (MimeMessage)InboxElements.SelectedItem;
+                var mailCheckWindow = new MailCheck(email);
+                mailCheckWindow.ShowDialog();
+            }
+            catch (NullReferenceException c)
+            {
+                Console.WriteLine(c);
+            }
         }
     }
 }

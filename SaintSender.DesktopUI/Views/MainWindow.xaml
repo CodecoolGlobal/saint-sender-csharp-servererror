@@ -24,6 +24,6 @@
         </DataGrid>
         <Button x:Name="ComposeBtn" Content="Compose" HorizontalAlignment="Left" Margin="907,26,0,0" VerticalAlignment="Top" Width="75" Click="ComposeBtn_Click"/>
         <Button x:Name="RefreshBtn" Content="Refresh" HorizontalAlignment="Left" Margin="763,26,0,0" VerticalAlignment="Top" Width="75" Click="RefreshBtn_Click"/>
-        <Button x:Name="OptionBtn" Content="Options" HorizontalAlignment="Left" Margin="632,26,0,0" VerticalAlignment="Top" Width="75" Click="OptionBtn_Click"/>
+        <Button x:Name="OptionBtn" Content="Re-Login" HorizontalAlignment="Left" Margin="632,26,0,0" VerticalAlignment="Top" Width="75" Click="OptionBtn_Click"/>
     </Grid>
 </Window>

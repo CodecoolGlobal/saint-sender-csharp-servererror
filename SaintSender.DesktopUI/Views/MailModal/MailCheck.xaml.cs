@@ -32,5 +32,10 @@ namespace SaintSender.DesktopUI.Views.MailModal
             SubjectBox.Text = mail.Subject;
             BodyText.Text = mail.GetTextBody(MimeKit.Text.TextFormat.Plain);
         }
+
+        private void CancelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

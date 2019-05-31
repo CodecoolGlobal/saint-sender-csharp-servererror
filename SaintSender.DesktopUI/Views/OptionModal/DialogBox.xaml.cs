@@ -1,4 +1,5 @@
 ﻿using SaintSender.DesktopUI.ViewModels;
+using SaintSender.DesktopUI.Views.WarningPopup;
 using System.Windows;
 
 namespace SDKSample
@@ -26,7 +27,15 @@ namespace SDKSample
             string emailAddress = emailBox.Text;
             string password = passwordBox.Password;
             _mvm.SetNewUser(emailAddress, password);
-            Close();
+            if (_mvm.IsEmailValid(emailAddress) && _mvm.GetUserEmails() != null)
+            {   
+                Close();
+            }
+            else
+            {
+                InvalidEmailOrPassword errorPopup = new InvalidEmailOrPassword();
+                errorPopup.Show();
+            }
         }
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)

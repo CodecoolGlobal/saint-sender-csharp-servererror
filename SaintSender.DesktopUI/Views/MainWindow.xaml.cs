@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using SaintSender.DesktopUI.Views.WarningPopup;
 
 namespace SaintSender.DesktopUI
 {
@@ -22,6 +23,10 @@ namespace SaintSender.DesktopUI
             var dialog = new DialogBox(_mVM);
             dialog.ShowDialog();
             emails = _mVM.GetUserEmails();
+            if (dialog == null && _mVM.GetUserEmails() == null)
+            {
+                Close();
+            }
             InboxElements.DataContext = emails;
         }
 

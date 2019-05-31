@@ -1,4 +1,5 @@
-﻿using SaintSender.Core.Entities;
+﻿using System;
+using SaintSender.Core.Entities;
 using System.Collections.ObjectModel;
 using MimeKit;
 
@@ -23,9 +24,22 @@ namespace SaintSender.DesktopUI.ViewModels
             mailBoxHandler.SendEmail(recipientEmail, subject, bodyText);
         }
 
+        public bool IsEmailValid(string emailaddress)
+        {
+            return mailBoxHandler.ValidateEmail(emailaddress);
+        }
+
         public ObservableCollection<MimeMessage> GetUserEmails()
         {
-            return mailBoxHandler.DownloadMessages();
+            try
+            {
+                return mailBoxHandler.DownloadMessages();
+            }
+            catch (MailKit.Security.AuthenticationException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
         }
 
         public void SetNewUser(string email, string password)
